@@ -1,0 +1,161 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("{% static 'img/mix.png' %}") no-repeat center fixed; /* your image file */
+            background-size: 60px 100px
+            font-family: 'Open Sans', sans-serif;
+        }
+        /* Theme colors */
+        :root {
+            --green: #7AB730;
+            --brightgreen: #8DC63F;
+            --yellow: #F9A825;
+            --cream: #FFF9F1;
+        }
+
+<!--        body {-->
+<!--            background: var(&#45;&#45;cream);-->
+<!--            font-family: 'Open Sans', sans-serif;-->
+<!--        }-->
+
+        /* ------- GREEN TOP BAR ------- */
+        .top-green-bar {
+            background: var(--green);
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        /* ------- LOGO (Fruitables) ------- */
+        .logo-section {
+            padding: 20px 50px 5px 50px;
+        }
+        .logo-text {
+            color: var(--green);
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.85); /* transparent box */
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 350px;
+            margin: 100px auto; /* center horizontally + push down */
+        }
+
+        caption {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            width: auto;
+            padding: 8px 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background-color: #2a78f2;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-green-bar d-flex justify-content-between">
+        <div>
+            <i class="bi bi-geo-alt-fill"></i> 123 Street, New York
+            &nbsp;&nbsp;
+            <i class="bi bi-envelope-fill"></i> Email@Example.com
+        </div>
+        <div>
+        </div>
+    </div>
+
+    <!-- ---------------- LOGO ---------------- -->
+    <div class="logo-section">
+        <h1 class="logo-text">Fruitables</h1>
+    </div>
+    <div class="form-container">
+        <form method="post">
+            <table align="center">
+                <caption>Register Here....!</caption>
+                <tr>
+                    <th align="left"><label>Username: </label></th>
+                    <td><input type="text" name="name" id="name" placeholder="Enter name"></td>
+                </tr>
+
+                <tr>
+                    <th align="left">E-Mail Id:</th>
+                    <td><input type="email" name="email" id="email" placeholder="Enter mail id"></td>
+                </tr>
+                <tr>
+                    <th align="left">Phone Number:</th>
+                    <td><input type="number" name="phn_num" id="phn_num" placeholder="Enter Phone Number"></td>
+                </tr>
+                <tr>
+                    <th align="left"><label>Password:</label></th>
+                    <td><input type="password" name="pass" id="pass" placeholder="Enter password"></td>
+                </tr>
+                <tr>
+                    <th align="left"><label>Confirm Password:</label></th>
+                    <td><input type="password" name="conpass" id="conpass" placeholder="Confirm password"></td>
+                </tr>
+            </table>
+            <div style="text-align:center;">
+                <button type="submit" class="btn btn-success">Register</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </div>
+        </form>
+    </div>
+
+<!--    <script>-->
+<!--        function validform() {-->
+<!--            const name = document.getElementById('name').value.trim();-->
+<!--            const email = document.getElementById('email').value.trim();-->
+<!--            const pass = document.getElementById('pass').value.trim();-->
+<!--            const conpass = document.getElementById('conpass').value.trim();-->
+
+<!--            if (name === '' || pass === '' || email === '' || conpass === '') {-->
+<!--                alert("Please fill out all fields");-->
+<!--                return false;-->
+<!--            } else if (conpass !== pass) {-->
+<!--                alert("Enter same password for the confirmation");-->
+<!--                return false;-->
+<!--            }-->
+
+<!--            console.log("Form submitted successfully with name:", name);-->
+<!--            return true;-->
+<!--        }-->
+<!--    </script>-->
+</body>
+</html>

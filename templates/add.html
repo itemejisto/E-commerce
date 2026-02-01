@@ -1,0 +1,174 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* Theme colors */
+        :root {
+            --green: #7AB730;
+            --brightgreen: #8DC63F;
+            --yellow: #F9A825;
+            --cream: #FFF9F1;
+        }
+
+        body {
+            background: var(--cream);
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* ------- GREEN TOP BAR ------- */
+        .top-green-bar {
+            background: var(--green);
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        /* ------- LOGO (Fruitables) ------- */
+        .logo-section {
+            padding: 20px 50px 5px 50px;
+        }
+        .logo-text {
+            color: var(--green);
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        /* ------- FORM CARD ------- */
+        .form-card {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 35px;
+            border-radius: 20px;
+            background: #ffffff;
+            border: 2px solid #7AB73022;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-card h3 {
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .form-control, .custom-select {
+            border-radius: 12px;
+            height: 52px;
+            border: 1px solid #7AB73055;
+        }
+
+        .form-control:focus, .custom-select:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 0.2rem rgba(122,183,48,0.25);
+        }
+
+        .file-input {
+            border: 1px solid #7AB73055;
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .btn-primary {
+            height: 52px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            background: var(--green) !important;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--brightgreen) !important;
+        }
+
+        label {
+            font-weight: 600;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------------- GREEN BAR ---------------- -->
+    <div class="top-green-bar d-flex justify-content-between">
+        <div>
+            <i class="bi bi-geo-alt-fill"></i> 123 Street, New York
+            &nbsp;&nbsp;
+            <i class="bi bi-envelope-fill"></i> Email@Example.com
+        </div>
+        <div>
+            Privacy Policy / Terms of Use / Sales and Refunds
+        </div>
+    </div>
+
+    <!-- ---------------- LOGO ---------------- -->
+    <div class="logo-section">
+        <h1 class="logo-text">Fruitables</h1>
+    </div>
+
+    <!-- ---------------- FORM ---------------- -->
+    <div class="form-card">
+        <h3 class="text-center mb-4">
+            <i class="bi bi-bag-plus"></i> Add New Product
+        </h3>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter product name">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" name="desc" class="form-control" placeholder="Short description">
+            </div>
+
+            <div class="form-group">
+                <label>Product Price</label>
+                <input type="number" name="price" class="form-control" placeholder="Enter price">
+            </div>
+
+            <div class="form-group">
+                <label>Product Image</label>
+                <input type="file" name="img" class="file-input w-100">
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category" class="form-control" required>
+                    <option value="">Select Category</option>
+                    {% for c in categories %}
+                        <option value="{{ c.id }}">{{ c.name }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label>Product Stock quantity</label>
+                <input type="number" name="stock" class="form-control" placeholder="Stock Quantity">
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label>Product Available</label>-->
+<!--                <input type="checkbox" name="available" class="form-control">-->
+<!--                <label for="available">Yes</label>-->
+<!--                <label for="available">NO</label>-->
+<!--            </div>-->
+
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="bi bi-check-circle"></i> Add Product
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
