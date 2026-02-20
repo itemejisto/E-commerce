@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
 
 </head>
 <body>
+
     <form method="post">
         {% csrf_token %}
         <h3 align="center">You want to delete the product</h3>
@@ -14,3 +16,4 @@
     </form>
 </body>
 </html>
+{% endblock %}

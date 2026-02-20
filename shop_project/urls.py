@@ -22,23 +22,25 @@ from django.urls import path, include
 from shop_app import views
 from django.conf.urls.static import static
 
-from shop_app.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shop_cart.urls')),
-    path('',views.index,name='index'),
-    path('search/',views.search,name='search'),
-    path('<slug:c_slug>/',views.index,name='prod_cat'),
-    path('shop/<int:shop_id>',views.details,name='details'),
-    path('add.html',views.add,name='add'),
-    path('update/<int:id>',views.update,name='update'),
-    path('delete/<int:id>',views.delete,name='delete'),
-    path('category/<str:cat>/', views.category, name='category'),
-    path('register',views.register,name='register'),
-    path('login',views.login,name='login'),
+    path('', include('shop_checkout.urls')),
+    path('', include('shop_register.urls')),
 
+    path('', views.index, name='index'),
+    path('search/', views.search, name='search'),
+    path('add/', views.add, name='add'),
+
+    path('shop/<int:shop_id>/', views.details, name='details'),
+    path('update/<int:id>/', views.update, name='update'),
+    path('delete/<int:id>/', views.delete, name='delete'),
+
+    # ✅ slug LAST
+    path('category/<slug:c_slug>/', views.index, name='prod_cat'),
 ]
+
 
 
 if settings.DEBUG:

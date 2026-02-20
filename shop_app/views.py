@@ -74,10 +74,8 @@ def category(request,cat):
     filtered=shop.objects.filter(category=cat)
     return render(request,"index.html",{'filtered':filtered,'category':cat})
 
-def register(request):
-    return render(request,"register.html")
-def login(request):
-    return render(request,"login.html")
+
+
 def search(request):
     prod=None
     query=None
